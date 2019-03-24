@@ -6,22 +6,23 @@
 
     <title>Laravel Bootstrap</title>
 
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-    <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 200;
-            height: 100vh;
-            margin: 0;
-        }
-    </style>
 </head>
 <body>
-    Home page.
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                Menu
+            </div>
+            <div class="col-sm">
+                <h1>Hello World!</h1>
+
+                <hr>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
