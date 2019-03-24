@@ -8,16 +8,11 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.card .table {
+    margin-bottom: 0;
 }
 
 html, body {
-    background-color: #fff;
-    color: #636b6f;
-    font-weight: 200;
-    height: 100vh;
     margin: 25px 0 0;
 }
 
