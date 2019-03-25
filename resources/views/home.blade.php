@@ -66,19 +66,19 @@
                             <th scope="row">1</th>
                             <td>Mark</td>
                             <td>Otto</td>
-                            <td class="text-right"><a href="" class="btn btn-primary">Download</a></td>
+                            <td class="text-right"><a href="" class="btn btn-sm btn-primary">Download</a></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
                             <td>Jacob</td>
                             <td>Thornton</td>
-                            <td class="text-right"><a href="" class="btn btn-primary">Download</a></td>
+                            <td class="text-right"><a href="" class="btn btn-sm btn-primary">Download</a></td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
                             <td>Larry</td>
                             <td>the Bird</td>
-                            <td class="text-right"><a href="" class="btn btn-primary">Download</a></td>
+                            <td class="text-right"><a href="" class="btn btn-sm btn-primary">Download</a></td>
                         </tr>
                         </tbody>
                     </table>
