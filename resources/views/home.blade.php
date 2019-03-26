@@ -128,6 +128,42 @@
                                 </div>
                             </fieldset>
                             <div class="form-group row">
+                                <div class="col-sm-3 text-sm-right">Switches</div>
+                                <div class="col-sm">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                        <label class="custom-control-label" for="customSwitch1">Airplane Mode</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                        <label class="custom-control-label" for="customSwitch2">Cellular Data</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch3">
+                                        <label class="custom-control-label" for="customSwitch3">Wi-Fi</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch4">
+                                        <label class="custom-control-label" for="customSwitch4">Bluetooth</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch5">
+                                        <label class="custom-control-label" for="customSwitch5">AirDrop</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" disabled id="customSwitch6">
+                                        <label class="custom-control-label" for="customSwitch6">Personal Hotspot</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="formControlRange" class="col-sm-3 col-form-label text-sm-right">Example range</label>
+                                <div class="col-sm">
+                                    <input type="range" class="custom-range mt-1" min="0" max="10" id="formControlRange">
+                                </div>
+                                <div class="col-sm-6"></div>
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-sm-3 text-sm-right">Checkbox</div>
                                 <div class="col-sm">
                                     <div class="form-check">
