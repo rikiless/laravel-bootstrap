@@ -10655,8 +10655,14 @@ a.text-dark:focus {
   }
 }
 
-.card .table {
-  margin-bottom: 0;
+.card .table thead th {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.card .table th,
+.card .table td {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
 }
 
 html,
