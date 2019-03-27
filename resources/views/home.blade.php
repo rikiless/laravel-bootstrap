@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Laravel Bootstrap</title>
 
@@ -12,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="app">
         <div class="row">
             <div class="col-sm-2">
                 <ul class="nav nav-pills flex-column">
@@ -89,103 +90,20 @@
                 <div class="card mb-4 shadow-sm">
                     <h5 class="card-header">Horizontal Form</h5>
                     <div class="card-body">
-                        <form>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-3 col-form-label text-sm-right">Email</label>
-                                <div class="col-sm">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputPassword3" class="col-sm-3 col-form-label text-sm-right">Password</label>
-                                <div class="col-sm">
-                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                                </div>
-                            </div>
-                            <fieldset class="form-group">
-                                <div class="row">
-                                    <legend class="col-form-label col-sm-3 pt-0 text-sm-right">Radios</legend>
-                                    <div class="col-sm">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                            <label class="form-check-label" for="gridRadios1">
-                                                First radio
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
-                                                Second radio
-                                            </label>
-                                        </div>
-                                        <div class="form-check disabled">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-                                            <label class="form-check-label" for="gridRadios3">
-                                                Third disabled radio
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <div class="form-group row">
-                                <div class="col-sm-3 text-sm-right">Switches</div>
-                                <div class="col-sm">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                        <label class="custom-control-label" for="customSwitch1">Airplane Mode</label>
-                                    </div>
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                                        <label class="custom-control-label" for="customSwitch2">Cellular Data</label>
-                                    </div>
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch3">
-                                        <label class="custom-control-label" for="customSwitch3">Wi-Fi</label>
-                                    </div>
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch4">
-                                        <label class="custom-control-label" for="customSwitch4">Bluetooth</label>
-                                    </div>
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch5">
-                                        <label class="custom-control-label" for="customSwitch5">AirDrop</label>
-                                    </div>
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" disabled id="customSwitch6">
-                                        <label class="custom-control-label" for="customSwitch6">Personal Hotspot</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="formControlRange" class="col-sm-3 col-form-label text-sm-right">Example range</label>
-                                <div class="col-sm">
-                                    <input type="range" class="custom-range mt-1" min="0" max="10" id="formControlRange">
-                                </div>
-                                <div class="col-sm-6"></div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3 text-sm-right">Checkbox</div>
-                                <div class="col-sm">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                        <label class="form-check-label" for="gridCheck1">
-                                            Example checkbox
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row mb-0">
-                                <div class="offset-3 col-sm">
-                                    <button type="submit" class="btn btn-primary">Sign in</button>
-                                    <button type="button" class="btn btn-success">Success</button>
-                                    <button type="button" class="btn btn-danger">Danger</button>
-                                </div>
-                            </div>
-                        </form>
+                        <custom-form-components></custom-form-components>
+                    </div>
+                </div>
+
+                <div class="card mb-4 shadow-sm">
+                    <h5 class="card-header">Form with Built Validation</h5>
+                    <div class="card-body">
+                        <form-validation></form-validation>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
