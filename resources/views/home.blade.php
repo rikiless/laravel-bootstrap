@@ -90,7 +90,7 @@
                 <div class="card mb-4 shadow-sm">
                     <h5 class="card-header">Horizontal Form</h5>
                     <div class="card-body">
-                        <custom-form-components></custom-form-components>
+                        <form-components></form-components>
                     </div>
                 </div>
 

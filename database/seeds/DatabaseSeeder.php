@@ -17,32 +17,32 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('values')->insert([
-            'name' => 'switch-airplane-mode',
+            'name' => 'airplane',
             'value' => 0
         ]);
 
         DB::table('values')->insert([
-            'name' => 'switch-cellular-data',
+            'name' => 'cellular',
             'value' => 1
         ]);
 
         DB::table('values')->insert([
-            'name' => 'switch-wifi',
+            'name' => 'wifi',
             'value' => 1
         ]);
 
         DB::table('values')->insert([
-            'name' => 'switch-bluetooth',
+            'name' => 'bluetooth',
             'value' => 1
         ]);
 
         DB::table('values')->insert([
-            'name' => 'switch-airdrop',
+            'name' => 'airdrop',
             'value' => 0
         ]);
 
         DB::table('values')->insert([
-            'name' => 'switch-personal-hotspot',
+            'name' => 'personal',
             'value' => 0
         ]);
 

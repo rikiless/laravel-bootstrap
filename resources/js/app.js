@@ -9,7 +9,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import CustomFormComponents from './components/CustomFormComponents';
+import FormComponents from './components/FormComponents';
 import FormValidation from './components/FormValidation';
 
 /**
@@ -23,7 +23,7 @@ import FormValidation from './components/FormValidation';
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('custom-form-components', CustomFormComponents);
+Vue.component('form-components', FormComponents);
 Vue.component('form-validation', FormValidation);
 
 /**

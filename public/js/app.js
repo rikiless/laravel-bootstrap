@@ -1754,10 +1754,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CustomFormComponents.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CustomFormComponents.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FormComponents.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FormComponents.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1862,8 +1862,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      form: {
+        range: 5,
+        airplane: false,
+        cellular: false,
+        wifi: false,
+        bluetooth: false,
+        airdrop: false,
+        personal: false
+      }
+    };
+  },
+  methods: {
+    postForm: function postForm() {
+      axios.post('/custom-form', this.form);
+    },
+    loadDefaults: function loadDefaults() {
+      var _this = this;
+
+      axios.get('/form-values').then(function (_ref) {
+        var data = _ref.data;
+        return _this.form = data;
+      });
+    }
+  },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    this.loadDefaults();
   }
 });
 
@@ -1949,8 +1975,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.submitted = true;
-      axios.post('/form', this.form) // .then(() => location.reload())
-      .then(function () {
+      axios.post('/form', this.form).then(function () {
         _this.cancel();
       }).catch(function (errors) {
         _this.errors = errors.response.data.errors;
@@ -36993,10 +37018,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CustomFormComponents.vue?vue&type=template&id=7ff55836&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CustomFormComponents.vue?vue&type=template&id=7ff55836& ***!
-  \***********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FormComponents.vue?vue&type=template&id=3ec8a525&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FormComponents.vue?vue&type=template&id=3ec8a525& ***!
+  \*****************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -37008,322 +37033,597 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("form", [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group row" }, [
+        _c("div", { staticClass: "col-sm-3 text-sm-right" }, [
+          _vm._v("Switches")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm" }, [
+          _c("div", { staticClass: "custom-control custom-switch" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.airplane,
+                  expression: "form.airplane"
+                }
+              ],
+              staticClass: "custom-control-input",
+              attrs: { type: "checkbox", id: "customSwitch1" },
+              domProps: {
+                checked: Array.isArray(_vm.form.airplane)
+                  ? _vm._i(_vm.form.airplane, null) > -1
+                  : _vm.form.airplane
+              },
+              on: {
+                change: [
+                  function($event) {
+                    var $$a = _vm.form.airplane,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 &&
+                          _vm.$set(_vm.form, "airplane", $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          _vm.$set(
+                            _vm.form,
+                            "airplane",
+                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                          )
+                      }
+                    } else {
+                      _vm.$set(_vm.form, "airplane", $$c)
+                    }
+                  },
+                  _vm.postForm
+                ]
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "custom-control-label",
+                attrs: { for: "customSwitch1" }
+              },
+              [_vm._v("Airplane Mode")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "custom-control custom-switch" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.cellular,
+                  expression: "form.cellular"
+                }
+              ],
+              staticClass: "custom-control-input",
+              attrs: { type: "checkbox", id: "customSwitch2" },
+              domProps: {
+                checked: Array.isArray(_vm.form.cellular)
+                  ? _vm._i(_vm.form.cellular, null) > -1
+                  : _vm.form.cellular
+              },
+              on: {
+                change: [
+                  function($event) {
+                    var $$a = _vm.form.cellular,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 &&
+                          _vm.$set(_vm.form, "cellular", $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          _vm.$set(
+                            _vm.form,
+                            "cellular",
+                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                          )
+                      }
+                    } else {
+                      _vm.$set(_vm.form, "cellular", $$c)
+                    }
+                  },
+                  _vm.postForm
+                ]
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "custom-control-label",
+                attrs: { for: "customSwitch2" }
+              },
+              [_vm._v("Cellular Data")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "custom-control custom-switch" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.wifi,
+                  expression: "form.wifi"
+                }
+              ],
+              staticClass: "custom-control-input",
+              attrs: { type: "checkbox", id: "customSwitch3" },
+              domProps: {
+                checked: Array.isArray(_vm.form.wifi)
+                  ? _vm._i(_vm.form.wifi, null) > -1
+                  : _vm.form.wifi
+              },
+              on: {
+                change: [
+                  function($event) {
+                    var $$a = _vm.form.wifi,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && _vm.$set(_vm.form, "wifi", $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          _vm.$set(
+                            _vm.form,
+                            "wifi",
+                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                          )
+                      }
+                    } else {
+                      _vm.$set(_vm.form, "wifi", $$c)
+                    }
+                  },
+                  _vm.postForm
+                ]
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "custom-control-label",
+                attrs: { for: "customSwitch3" }
+              },
+              [_vm._v("Wi-Fi")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "custom-control custom-switch" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.bluetooth,
+                  expression: "form.bluetooth"
+                }
+              ],
+              staticClass: "custom-control-input",
+              attrs: { type: "checkbox", id: "customSwitch4" },
+              domProps: {
+                checked: Array.isArray(_vm.form.bluetooth)
+                  ? _vm._i(_vm.form.bluetooth, null) > -1
+                  : _vm.form.bluetooth
+              },
+              on: {
+                change: [
+                  function($event) {
+                    var $$a = _vm.form.bluetooth,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 &&
+                          _vm.$set(_vm.form, "bluetooth", $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          _vm.$set(
+                            _vm.form,
+                            "bluetooth",
+                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                          )
+                      }
+                    } else {
+                      _vm.$set(_vm.form, "bluetooth", $$c)
+                    }
+                  },
+                  _vm.postForm
+                ]
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "custom-control-label",
+                attrs: { for: "customSwitch4" }
+              },
+              [_vm._v("Bluetooth")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "custom-control custom-switch" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.airdrop,
+                  expression: "form.airdrop"
+                }
+              ],
+              staticClass: "custom-control-input",
+              attrs: { type: "checkbox", id: "customSwitch5" },
+              domProps: {
+                checked: Array.isArray(_vm.form.airdrop)
+                  ? _vm._i(_vm.form.airdrop, null) > -1
+                  : _vm.form.airdrop
+              },
+              on: {
+                change: [
+                  function($event) {
+                    var $$a = _vm.form.airdrop,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 &&
+                          _vm.$set(_vm.form, "airdrop", $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          _vm.$set(
+                            _vm.form,
+                            "airdrop",
+                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                          )
+                      }
+                    } else {
+                      _vm.$set(_vm.form, "airdrop", $$c)
+                    }
+                  },
+                  _vm.postForm
+                ]
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "custom-control-label",
+                attrs: { for: "customSwitch5" }
+              },
+              [_vm._v("AirDrop")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "custom-control custom-switch" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.personal,
+                  expression: "form.personal"
+                }
+              ],
+              staticClass: "custom-control-input",
+              attrs: { type: "checkbox", disabled: "", id: "customSwitch6" },
+              domProps: {
+                checked: Array.isArray(_vm.form.personal)
+                  ? _vm._i(_vm.form.personal, null) > -1
+                  : _vm.form.personal
+              },
+              on: {
+                change: [
+                  function($event) {
+                    var $$a = _vm.form.personal,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 &&
+                          _vm.$set(_vm.form, "personal", $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          _vm.$set(
+                            _vm.form,
+                            "personal",
+                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                          )
+                      }
+                    } else {
+                      _vm.$set(_vm.form, "personal", $$c)
+                    }
+                  },
+                  _vm.postForm
+                ]
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "custom-control-label",
+                attrs: { for: "customSwitch6" }
+              },
+              [_vm._v("Personal Hotspot")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group row" }, [
+        _c(
+          "label",
+          {
+            staticClass: "col-sm-3 col-form-label text-sm-right",
+            attrs: { for: "formControlRange" }
+          },
+          [_vm._v("Example range")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.range,
+                expression: "form.range"
+              }
+            ],
+            staticClass: "custom-range mt-1",
+            attrs: {
+              type: "range",
+              min: "0",
+              max: "10",
+              id: "formControlRange"
+            },
+            domProps: { value: _vm.form.range },
+            on: {
+              change: _vm.postForm,
+              __r: function($event) {
+                return _vm.$set(_vm.form, "range", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-6" }, [_vm._v(_vm._s(_vm.form.range))])
+      ]),
+      _vm._v(" "),
+      _vm._m(3),
+      _vm._v(" "),
+      _vm._m(4)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("form", [
-        _c("div", { staticClass: "form-group row" }, [
-          _c(
-            "label",
-            {
-              staticClass: "col-sm-3 col-form-label text-sm-right",
-              attrs: { for: "inputEmail3" }
-            },
-            [_vm._v("Email")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm" }, [
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "email", id: "inputEmail3", placeholder: "Email" }
-            })
-          ])
-        ]),
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-sm-3 col-form-label text-sm-right",
+          attrs: { for: "inputEmail3" }
+        },
+        [_vm._v("Email")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "email", id: "inputEmail3", placeholder: "Email" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-sm-3 col-form-label text-sm-right",
+          attrs: { for: "inputPassword3" }
+        },
+        [_vm._v("Password")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "password",
+            id: "inputPassword3",
+            placeholder: "Password"
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("fieldset", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "legend",
+          { staticClass: "col-form-label col-sm-3 pt-0 text-sm-right" },
+          [_vm._v("Radios")]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _c(
-            "label",
-            {
-              staticClass: "col-sm-3 col-form-label text-sm-right",
-              attrs: { for: "inputPassword3" }
-            },
-            [_vm._v("Password")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm" }, [
+        _c("div", { staticClass: "col-sm" }, [
+          _c("div", { staticClass: "form-check" }, [
             _c("input", {
-              staticClass: "form-control",
+              staticClass: "form-check-input",
               attrs: {
-                type: "password",
-                id: "inputPassword3",
-                placeholder: "Password"
+                type: "radio",
+                name: "gridRadios",
+                id: "gridRadios1",
+                value: "option1",
+                checked: ""
               }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("fieldset", { staticClass: "form-group" }, [
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "legend",
-              { staticClass: "col-form-label col-sm-3 pt-0 text-sm-right" },
-              [_vm._v("Radios")]
-            ),
+            }),
             _vm._v(" "),
-            _c("div", { staticClass: "col-sm" }, [
-              _c("div", { staticClass: "form-check" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "gridRadios",
-                    id: "gridRadios1",
-                    value: "option1",
-                    checked: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "gridRadios1" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            First radio\n                        "
-                    )
-                  ]
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "gridRadios1" }
+              },
+              [
+                _vm._v(
+                  "\n                            First radio\n                        "
                 )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "gridRadios",
-                    id: "gridRadios2",
-                    value: "option2"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "gridRadios2" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            Second radio\n                        "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check disabled" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "gridRadios",
-                    id: "gridRadios3",
-                    value: "option3",
-                    disabled: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "gridRadios3" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            Third disabled radio\n                        "
-                    )
-                  ]
-                )
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _c("div", { staticClass: "col-sm-3 text-sm-right" }, [
-            _vm._v("Switches")
+              ]
+            )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm" }, [
-            _c("div", { staticClass: "custom-control custom-switch" }, [
-              _c("input", {
-                staticClass: "custom-control-input",
-                attrs: { type: "checkbox", id: "customSwitch1" }
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "custom-control-label",
-                  attrs: { for: "customSwitch1" }
-                },
-                [_vm._v("Airplane Mode")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "custom-control custom-switch" }, [
-              _c("input", {
-                staticClass: "custom-control-input",
-                attrs: { type: "checkbox", id: "customSwitch2" }
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "custom-control-label",
-                  attrs: { for: "customSwitch2" }
-                },
-                [_vm._v("Cellular Data")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "custom-control custom-switch" }, [
-              _c("input", {
-                staticClass: "custom-control-input",
-                attrs: { type: "checkbox", id: "customSwitch3" }
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "custom-control-label",
-                  attrs: { for: "customSwitch3" }
-                },
-                [_vm._v("Wi-Fi")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "custom-control custom-switch" }, [
-              _c("input", {
-                staticClass: "custom-control-input",
-                attrs: { type: "checkbox", id: "customSwitch4" }
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "custom-control-label",
-                  attrs: { for: "customSwitch4" }
-                },
-                [_vm._v("Bluetooth")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "custom-control custom-switch" }, [
-              _c("input", {
-                staticClass: "custom-control-input",
-                attrs: { type: "checkbox", id: "customSwitch5" }
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "custom-control-label",
-                  attrs: { for: "customSwitch5" }
-                },
-                [_vm._v("AirDrop")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "custom-control custom-switch" }, [
-              _c("input", {
-                staticClass: "custom-control-input",
-                attrs: { type: "checkbox", disabled: "", id: "customSwitch6" }
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "custom-control-label",
-                  attrs: { for: "customSwitch6" }
-                },
-                [_vm._v("Personal Hotspot")]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _c(
-            "label",
-            {
-              staticClass: "col-sm-3 col-form-label text-sm-right",
-              attrs: { for: "formControlRange" }
-            },
-            [_vm._v("Example range")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm" }, [
+          _c("div", { staticClass: "form-check" }, [
             _c("input", {
-              staticClass: "custom-range mt-1",
+              staticClass: "form-check-input",
               attrs: {
-                type: "range",
-                min: "0",
-                max: "10",
-                id: "formControlRange"
+                type: "radio",
+                name: "gridRadios",
+                id: "gridRadios2",
+                value: "option2"
               }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-6" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _c("div", { staticClass: "col-sm-3 text-sm-right" }, [
-            _vm._v("Checkbox")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm" }, [
-            _c("div", { staticClass: "form-check" }, [
-              _c("input", {
-                staticClass: "form-check-input",
-                attrs: { type: "checkbox", id: "gridCheck1" }
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "form-check-label",
-                  attrs: { for: "gridCheck1" }
-                },
-                [
-                  _vm._v(
-                    "\n                        Example checkbox\n                    "
-                  )
-                ]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group row mb-0" }, [
-          _c("div", { staticClass: "offset-3 col-sm" }, [
-            _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-              [_vm._v("Sign in")]
-            ),
+            }),
             _vm._v(" "),
             _c(
-              "button",
-              { staticClass: "btn btn-success", attrs: { type: "button" } },
-              [_vm._v("Success")]
-            ),
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "gridRadios2" }
+              },
+              [
+                _vm._v(
+                  "\n                            Second radio\n                        "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-check disabled" }, [
+            _c("input", {
+              staticClass: "form-check-input",
+              attrs: {
+                type: "radio",
+                name: "gridRadios",
+                id: "gridRadios3",
+                value: "option3",
+                disabled: ""
+              }
+            }),
             _vm._v(" "),
             _c(
-              "button",
-              { staticClass: "btn btn-danger", attrs: { type: "button" } },
-              [_vm._v("Danger")]
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "gridRadios3" }
+              },
+              [
+                _vm._v(
+                  "\n                            Third disabled radio\n                        "
+                )
+              ]
             )
           ])
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c("div", { staticClass: "col-sm-3 text-sm-right" }, [
+        _vm._v("Checkbox")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm" }, [
+        _c("div", { staticClass: "form-check" }, [
+          _c("input", {
+            staticClass: "form-check-input",
+            attrs: { type: "checkbox", id: "gridCheck1" }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            { staticClass: "form-check-label", attrs: { for: "gridCheck1" } },
+            [
+              _vm._v(
+                "\n                        Example checkbox\n                    "
+              )
+            ]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row mb-0" }, [
+      _c("div", { staticClass: "offset-3 col-sm" }, [
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("Sign in")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-success", attrs: { type: "button" } },
+          [_vm._v("Success")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-danger", attrs: { type: "button" } },
+          [_vm._v("Danger")]
+        )
       ])
     ])
   }
@@ -49665,7 +49965,7 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_CustomFormComponents__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/CustomFormComponents */ "./resources/js/components/CustomFormComponents.vue");
+/* harmony import */ var _components_FormComponents__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/FormComponents */ "./resources/js/components/FormComponents.vue");
 /* harmony import */ var _components_FormValidation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/FormValidation */ "./resources/js/components/FormValidation.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -49687,7 +49987,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('custom-form-components', _components_CustomFormComponents__WEBPACK_IMPORTED_MODULE_0__["default"]);
+Vue.component('form-components', _components_FormComponents__WEBPACK_IMPORTED_MODULE_0__["default"]);
 Vue.component('form-validation', _components_FormValidation__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -49759,17 +50059,17 @@ if (token) {
 
 /***/ }),
 
-/***/ "./resources/js/components/CustomFormComponents.vue":
-/*!**********************************************************!*\
-  !*** ./resources/js/components/CustomFormComponents.vue ***!
-  \**********************************************************/
+/***/ "./resources/js/components/FormComponents.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/FormComponents.vue ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CustomFormComponents_vue_vue_type_template_id_7ff55836___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CustomFormComponents.vue?vue&type=template&id=7ff55836& */ "./resources/js/components/CustomFormComponents.vue?vue&type=template&id=7ff55836&");
-/* harmony import */ var _CustomFormComponents_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CustomFormComponents.vue?vue&type=script&lang=js& */ "./resources/js/components/CustomFormComponents.vue?vue&type=script&lang=js&");
+/* harmony import */ var _FormComponents_vue_vue_type_template_id_3ec8a525___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormComponents.vue?vue&type=template&id=3ec8a525& */ "./resources/js/components/FormComponents.vue?vue&type=template&id=3ec8a525&");
+/* harmony import */ var _FormComponents_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormComponents.vue?vue&type=script&lang=js& */ "./resources/js/components/FormComponents.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -49779,9 +50079,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _CustomFormComponents_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _CustomFormComponents_vue_vue_type_template_id_7ff55836___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _CustomFormComponents_vue_vue_type_template_id_7ff55836___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _FormComponents_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormComponents_vue_vue_type_template_id_3ec8a525___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormComponents_vue_vue_type_template_id_3ec8a525___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -49791,38 +50091,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/CustomFormComponents.vue"
+component.options.__file = "resources/js/components/FormComponents.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/CustomFormComponents.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/components/CustomFormComponents.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************/
+/***/ "./resources/js/components/FormComponents.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/FormComponents.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomFormComponents_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CustomFormComponents.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CustomFormComponents.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomFormComponents_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormComponents_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./FormComponents.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FormComponents.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormComponents_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/CustomFormComponents.vue?vue&type=template&id=7ff55836&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/components/CustomFormComponents.vue?vue&type=template&id=7ff55836& ***!
-  \*****************************************************************************************/
+/***/ "./resources/js/components/FormComponents.vue?vue&type=template&id=3ec8a525&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/FormComponents.vue?vue&type=template&id=3ec8a525& ***!
+  \***********************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomFormComponents_vue_vue_type_template_id_7ff55836___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CustomFormComponents.vue?vue&type=template&id=7ff55836& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CustomFormComponents.vue?vue&type=template&id=7ff55836&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomFormComponents_vue_vue_type_template_id_7ff55836___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormComponents_vue_vue_type_template_id_3ec8a525___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./FormComponents.vue?vue&type=template&id=3ec8a525& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FormComponents.vue?vue&type=template&id=3ec8a525&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormComponents_vue_vue_type_template_id_3ec8a525___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomFormComponents_vue_vue_type_template_id_7ff55836___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormComponents_vue_vue_type_template_id_3ec8a525___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

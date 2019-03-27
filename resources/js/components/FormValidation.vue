@@ -72,7 +72,6 @@
                 this.submitted = true;
 
                 axios.post('/form', this.form)
-                // .then(() => location.reload())
                     .then(() => {
                         this.cancel();
                     })

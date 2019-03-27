@@ -20,3 +20,7 @@ Route::get('/home', function () {
 });
 
 Route::post('/form', 'HomeController@store');
+
+Route::post('/custom-form', 'HomeController@storeCustomForm');
+
+Route::get('/form-values', 'HomeController@index');

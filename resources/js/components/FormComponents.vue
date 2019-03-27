@@ -42,27 +42,27 @@
                 <div class="col-sm-3 text-sm-right">Switches</div>
                 <div class="col-sm">
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1" v-model="form.airplane" @change="postForm">
                         <label class="custom-control-label" for="customSwitch1">Airplane Mode</label>
                     </div>
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch2" v-model="form.cellular" @change="postForm">
                         <label class="custom-control-label" for="customSwitch2">Cellular Data</label>
                     </div>
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch3">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch3" v-model="form.wifi" @change="postForm">
                         <label class="custom-control-label" for="customSwitch3">Wi-Fi</label>
                     </div>
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch4">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch4" v-model="form.bluetooth" @change="postForm">
                         <label class="custom-control-label" for="customSwitch4">Bluetooth</label>
                     </div>
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch5">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch5" v-model="form.airdrop" @change="postForm">
                         <label class="custom-control-label" for="customSwitch5">AirDrop</label>
                     </div>
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" disabled id="customSwitch6">
+                        <input type="checkbox" class="custom-control-input" disabled id="customSwitch6" v-model="form.personal" @change="postForm">
                         <label class="custom-control-label" for="customSwitch6">Personal Hotspot</label>
                     </div>
                 </div>
@@ -70,9 +70,9 @@
             <div class="form-group row">
                 <label for="formControlRange" class="col-sm-3 col-form-label text-sm-right">Example range</label>
                 <div class="col-sm">
-                    <input type="range" class="custom-range mt-1" min="0" max="10" id="formControlRange">
+                    <input type="range" class="custom-range mt-1" min="0" max="10" id="formControlRange" v-model="form.range" @change="postForm">
                 </div>
-                <div class="col-sm-6"></div>
+                <div class="col-sm-6">{{ form.range }}</div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-3 text-sm-right">Checkbox</div>
@@ -98,8 +98,32 @@
 
 <script>
     export default {
+        data() {
+            return {
+                form: {
+                    range: 5,
+                    airplane: false,
+                    cellular: false,
+                    wifi: false,
+                    bluetooth: false,
+                    airdrop: false,
+                    personal: false,
+                }
+            }
+        },
+
+        methods: {
+            postForm() {
+                axios.post('/custom-form', this.form);
+            },
+
+            loadDefaults() {
+                axios.get('/form-values').then(({data}) => this.form = data);
+            }
+        },
+
         mounted() {
-            console.log('Component mounted.')
+            this.loadDefaults();
         }
     }
 </script>
