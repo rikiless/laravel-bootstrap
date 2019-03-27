@@ -87,19 +87,21 @@
                     </div>
                 </div>
 
-                <div class="card mb-4 shadow-sm">
-                    <h5 class="card-header">Horizontal Form</h5>
-                    <div class="card-body">
-                        <form-components></form-components>
-                    </div>
-                </div>
+                @card
+                    @slot('title')
+                        Horizontal Form
+                    @endslot
 
-                <div class="card mb-4 shadow-sm">
-                    <h5 class="card-header">Form with Built Validation</h5>
-                    <div class="card-body">
-                        <form-validation></form-validation>
-                    </div>
-                </div>
+                    <form-components></form-components>
+                @endcard
+
+                @card
+                    @slot('title')
+                        Form with Built Validation
+                    @endslot
+
+                    <form-validation></form-validation>
+                @endcard
             </div>
         </div>
     </div>
