@@ -11,6 +11,7 @@ window.Vue = require('vue');
 
 import FormComponents from './components/FormComponents';
 import FormValidation from './components/FormValidation';
+import Wysiwyg from './components/Wysiwyg';
 
 /**
  * The following block of code may be used to automatically register your
@@ -25,6 +26,9 @@ import FormValidation from './components/FormValidation';
 
 Vue.component('form-components', FormComponents);
 Vue.component('form-validation', FormValidation);
+Vue.component('wysiwyg', Wysiwyg);
+
+Vue.config.ignoredElements = ['trix-editor'];
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

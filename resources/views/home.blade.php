@@ -8,6 +8,7 @@
     <title>Laravel Bootstrap</title>
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.0/trix.css">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -101,6 +102,14 @@
                     @endslot
 
                     <form-validation></form-validation>
+                @endcard
+
+                @card
+                @slot('title')
+                    Trix Editor
+                @endslot
+
+                <wysiwyg></wysiwyg>
                 @endcard
             </div>
         </div>
