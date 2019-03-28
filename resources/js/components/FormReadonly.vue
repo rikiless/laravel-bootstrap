@@ -2,7 +2,8 @@
     <div class="card mb-4 shadow-sm">
         <h5 class="card-header">
             Readonly Plain Text
-            <a href="#" v-if="! editing" @click.prevent="editing = true" class="float-right">Edit</a>
+            <a href="#" v-if="! editing" @click.prevent="editing = true" class="float-right"><i class="far fa-edit"></i></a>
+            <a href="#" v-if="! editing" @click.prevent="editing = true" class="float-right pr-3"><i class="far fa-trash-alt"></i></a>
         </h5>
         <div class="card-body">
             <form autocomplete="off">

@@ -1961,6 +1961,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38470,7 +38471,24 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Edit")]
+            [_c("i", { staticClass: "far fa-edit" })]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      !_vm.editing
+        ? _c(
+            "a",
+            {
+              staticClass: "float-right pr-3",
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.editing = true
+                }
+              }
+            },
+            [_c("i", { staticClass: "far fa-trash-alt" })]
           )
         : _vm._e()
     ]),
