@@ -11,6 +11,7 @@ window.Vue = require('vue');
 
 import FormComponents from './components/FormComponents';
 import FormValidation from './components/FormValidation';
+import FormReadonly from './components/FormReadonly';
 import Wysiwyg from './components/Wysiwyg';
 
 /**
@@ -26,6 +27,7 @@ import Wysiwyg from './components/Wysiwyg';
 
 Vue.component('form-components', FormComponents);
 Vue.component('form-validation', FormValidation);
+Vue.component('form-readonly', FormReadonly);
 Vue.component('wysiwyg', Wysiwyg);
 
 Vue.config.ignoredElements = ['trix-editor'];

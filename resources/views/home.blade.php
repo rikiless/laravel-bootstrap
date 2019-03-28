@@ -104,12 +104,14 @@
                     <form-validation></form-validation>
                 @endcard
 
-                @card
-                @slot('title')
-                    Trix Editor
-                @endslot
+                <form-readonly></form-readonly>
 
-                <wysiwyg></wysiwyg>
+                @card
+                    @slot('title')
+                        Trix Editor
+                    @endslot
+
+                    <wysiwyg></wysiwyg>
                 @endcard
             </div>
         </div>
