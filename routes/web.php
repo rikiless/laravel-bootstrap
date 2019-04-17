@@ -24,3 +24,10 @@ Route::post('/form', 'HomeController@store');
 Route::post('/custom-form', 'HomeController@storeCustomForm');
 
 Route::get('/form-values', 'HomeController@index');
+
+Route::get('resource', function () {
+    return [
+        'message' => 'Hello World!',
+        'count' => 1,
+    ];
+})->middleware('auth:api');
