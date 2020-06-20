@@ -1,3 +1,4 @@
+$table-group-seperator-color: #dfe2e6;
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
@@ -9,9 +10,6 @@
 @import '~bootstrap/scss/bootstrap';
 
 .card {
-    .table thead th {
-        border-bottom: 1px solid $table-border-color;
-    }
     .table th, .table td {
         padding-left: 1.5em;
         padding-right: 1.5em;
