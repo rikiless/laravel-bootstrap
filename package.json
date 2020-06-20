@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.8.1",
+        "bootstrap-icons": "^1.0.0-alpha4",
         "font-awesome": "^4.7.0",
         "trix": "^1.1.0"
     }

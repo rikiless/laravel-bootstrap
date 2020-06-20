@@ -16,6 +16,6 @@ mix.js('resources/js/app.js', 'public/js')
     .version();
 
 mix.browserSync({
-    proxy: '127.0.0.1:8000',
+    proxy: 'laravel-bootstrap.test',
     notify: false
 });
