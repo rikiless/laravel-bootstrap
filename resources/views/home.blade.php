@@ -32,7 +32,9 @@
             <div class="card mb-4 shadow-sm">
                 <h5 class="card-header">Bitbucket</h5>
                 <div class="card-body">
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text">
+                        With supporting text below as a natural lead-in to additional content.
+                    </p>
 
                     <a href="" class="btn btn-primary">Connect to Bitbucket</a>
                 </div>
@@ -47,11 +49,11 @@
             </div>
 
             <div class="card mb-4 shadow-sm">
-                <h5 class="card-header border-bottom-0">Invoices</h5>
+                <h5 class="card-header">Invoices</h5>
 
-                <div class="card-body p-0">
+
                     <table class="table table-striped table-hover mb-0">
-                        <thead>
+                        <thead class="border-light">
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">First</th>
@@ -80,34 +82,33 @@
                         </tr>
                         </tbody>
                     </table>
-                </div>
             </div>
 
-            @card
+            <x-card>
                 @slot('title')
                     Horizontal Form
                 @endslot
 
                 <form-components></form-components>
-            @endcard
+            </x-card>
 
-            @card
+            <x-card>
                 @slot('title')
                     Form with Built Validation
                 @endslot
 
                 <form-validation></form-validation>
-            @endcard
+            </x-card>
 
             <form-readonly></form-readonly>
 
-            @card
+            <x-card>
                 @slot('title')
                     Trix Editor
                 @endslot
 
                 <wysiwyg></wysiwyg>
-            @endcard
+            </x-card>
         </div>
     </div>
 </div>
