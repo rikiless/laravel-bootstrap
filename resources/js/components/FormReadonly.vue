@@ -17,7 +17,7 @@
         </h5>
         <div class="card-body">
             <form autocomplete="off">
-                <div class="form-group row">
+                <div class="row mb-3">
                     <label for="inputName2" class="col-sm-3 col-form-label text-right">Name</label>
                     <div class="col-sm">
                         <input v-bind:class="[errors.name ? 'is-invalid' : '', editing ? 'form-control' : 'form-control-plaintext']"
@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="row mb-3">
                     <label for="inputEmail2" class="col-sm-3 col-form-label text-right">Email</label>
                     <div class="col-sm">
                         <input v-bind:class="[errors.name ? 'is-invalid' : '', editing ? 'form-control' : 'form-control-plaintext']"
@@ -43,7 +43,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="row mb-3">
                     <label for="inputQuestion2" class="col-sm-3 col-form-label text-right">Question</label>
                     <div class="col-sm">
                             <textarea v-bind:class="[errors.name ? 'is-invalid' : '', editing ? 'form-control' : 'form-control-plaintext']"
@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row mb-0" v-if="editing">
+                <div class="row mb-0" v-if="editing">
                     <div class="offset-sm-3 col-sm">
                         <button type="button" class="btn btn-primary">Send</button>
                     </div>
