@@ -7,7 +7,7 @@
 <title>Laravel Bootstrap</title>
 
 <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.0/trix.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.min.css">
 
 <div class="container" id="app">
     <div class="row">
