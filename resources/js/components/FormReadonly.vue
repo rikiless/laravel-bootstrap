@@ -18,7 +18,7 @@
         <div class="card-body">
             <form autocomplete="off">
                 <div class="row mb-3">
-                    <label for="inputName2" class="col-sm-3 col-form-label text-right">Name</label>
+                    <label for="inputName2" class="col-sm-3 col-form-label text-sm-right">Name</label>
                     <div class="col-sm">
                         <input v-bind:class="[errors.name ? 'is-invalid' : '', editing ? 'form-control' : 'form-control-plaintext']"
                                v-bind:readonly="! editing"
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label for="inputEmail2" class="col-sm-3 col-form-label text-right">Email</label>
+                    <label for="inputEmail2" class="col-sm-3 col-form-label text-sm-right">Email</label>
                     <div class="col-sm">
                         <input v-bind:class="[errors.name ? 'is-invalid' : '', editing ? 'form-control' : 'form-control-plaintext']"
                                v-bind:readonly="! editing"
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label for="inputQuestion2" class="col-sm-3 col-form-label text-right">Question</label>
+                    <label for="inputQuestion2" class="col-sm-3 col-form-label text-sm-right">Question</label>
                     <div class="col-sm">
                             <textarea v-bind:class="[errors.name ? 'is-invalid' : '', editing ? 'form-control' : 'form-control-plaintext']"
                                       v-bind:readonly="! editing"

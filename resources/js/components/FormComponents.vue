@@ -86,7 +86,7 @@
             </div>
         </div>
         <div class="row mb-0">
-            <div class="offset-3 col-sm">
+            <div class="offset-sm-3 col-sm">
                 <button type="submit" class="btn btn-primary">Sign in</button>
                 <button type="button" class="btn btn-success">Success</button>
                 <button type="button" class="btn btn-danger">Danger</button>
