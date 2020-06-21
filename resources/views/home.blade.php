@@ -50,8 +50,6 @@
 
             <div class="card mb-4 shadow-sm">
                 <h5 class="card-header">Invoices</h5>
-
-
                     <table class="table table-striped table-hover mb-0">
                         <thead class="border-light">
                         <tr>
