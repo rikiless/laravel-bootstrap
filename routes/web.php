@@ -11,19 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
+Route::get('form-values', 'HomeController@values');
 
-Route::post('/form', 'HomeController@store');
-
-Route::post('/custom-form', 'HomeController@storeCustomForm');
-
-Route::get('/form-values', 'HomeController@index');
+Route::post('form', 'HomeController@store');
+Route::post('custom-form', 'HomeController@storeCustomForm');
 
 Route::get('resource', function () {
-    return [
-        'message' => 'Hello World!',
-        'count' => 1,
-    ];
+    return ['message' => 'Hello World!', 'count' => 1];
 })->middleware('auth:api');

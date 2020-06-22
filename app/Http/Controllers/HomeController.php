@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    public function index()
+    {
+        return view('home');
+    }
+
+    public function values()
+    {
+        return Values::all()->pluck('value', 'name');
+    }
+
     public function store(Request $request)
     {
         return $request->validate([
@@ -23,10 +33,5 @@ class HomeController extends Controller
         }
 
         return response('', 204);
-    }
-
-    public function index()
-    {
-        return Values::all()->pluck('value', 'name');
     }
 }
