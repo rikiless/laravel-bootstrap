@@ -39,5 +39,36 @@ Vue.config.ignoredElements = ['trix-editor'];
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
+    created() {
+        this.setupAxios();
+    },
+
+    data() {
+        return {
+            moment: window.moment,
+            isLoading: false,
+        }
+    },
+
+    methods: {
+        setupAxios() {
+            axios.interceptors.request.use(config => {
+                this.isLoading = true;
+                return config;
+            }, error => {
+                this.isLoading = false;
+                return Promise.reject(error);
+            });
+
+            axios.interceptors.response.use(response => {
+                this.isLoading = false;
+                return response;
+            }, error => {
+                this.isLoading = false;
+                return Promise.reject(error);
+            });
+        }
+    }
 });
