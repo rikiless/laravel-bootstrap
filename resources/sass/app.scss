@@ -9,6 +9,10 @@ $table-group-seperator-color: #dfe2e6;
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+.vue-wait, .vue-wait * {
+    cursor: wait !important;
+}
+
 .card {
     .table th, .table td {
         padding-left: 1.5em;
