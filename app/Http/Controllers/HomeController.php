@@ -22,7 +22,7 @@ class HomeController extends Controller
         return $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'question' => 'required'
+            'question' => 'required',
         ]);
     }
 
