@@ -34,4 +34,17 @@ class HomeController extends Controller
 
         return response('', 204);
     }
+
+    public function storeTest(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'min:3'],
+            'surname' => ['required', 'min:3'],
+       ]);
+
+        return redirect()
+            ->back()
+            ->withInput()
+            ->with('message', 'Done!');
+    }
 }

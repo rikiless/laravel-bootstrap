@@ -41,13 +41,63 @@
                     </div>
                 </div>
 
-                <div class="card mb-4 shadow-sm">
-                    <h5 class="card-header">GitHub</h5>
-                    <div class="card-body">
-                        <a href="" class="btn btn-primary">Refresh Token</a>
-                        <a href="" class="btn btn-secondary">Unlink</a>
-                    </div>
-                </div>
+                <x-card>
+                    @slot('title')
+                        PhpStorm's Live Templates
+                    @endslot
+
+                    @if ($flash = session('message'))
+                        <div class="alert alert-success">
+                            {{ $flash }}
+                        </div>
+                    @endif
+
+                    <form action="test" method="post">
+                        @csrf
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text"
+                                   class="form-control @error('name') is-invalid @enderror @if(session('message')) is-valid @endif)"
+                                   id="name"
+                                   name="name"
+                                   value="{{ old('name') }}"
+                                   placeholder="">
+
+                            @error('name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="surname" class="form-label">Surname</label>
+                            <input type="text"
+                                   class="form-control @error('surname') is-invalid @enderror @if(session('message')) is-valid @endif"
+                                   name="surname"
+                                   id="surname"
+                                   value="{{ old('surname') }}"
+                                   placeholder="">
+                            @error('surname')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-warning">Submit</button>
+                    </form>
+                </x-card>
+
+                <x-card>
+                    @slot('title')
+                        GitHub
+                    @endslot
+
+                    <a href="" class="btn btn-primary">Refresh Token</a>
+                    <a href="" class="btn btn-secondary">Unlink</a>
+                </x-card>
 
                 <div class="card mb-4 shadow-sm">
                     <h5 class="card-header">Invoices</h5>

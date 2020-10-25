@@ -22,3 +22,5 @@ Route::post('custom-form', [HomeController::class, 'storeCustomForm']);
 Route::get('resource', function () {
     return ['message' => 'Hello World!', 'count' => 1];
 })->middleware('auth:api');
+
+Route::post('test', [HomeController::class, 'storeTest']);
