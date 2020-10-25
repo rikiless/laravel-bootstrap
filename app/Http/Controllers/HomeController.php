@@ -35,9 +35,7 @@ class HomeController extends Controller
 
     public function storeCustomForm(Request $request)
     {
-        foreach ($request->all() as $key => $value) {
-            Values::whereName($key)->update(compact('value'));
-        }
+        Values::updateValues($request);
 
         return response('', 204);
     }
