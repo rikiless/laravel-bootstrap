@@ -86,6 +86,22 @@
                             @enderror
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="select" class="form-label">Select</label>
+                                    <x-forms.select :items="$channels" :default="2" empty="Select your favorite TV channel" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="select" class="form-label">Multiselect</label>
+                                    <x-forms.multiselect :items="$channels" :default="[3,4]"/>
+                                </div>
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn btn-warning">Submit</button>
                     </form>
                 </x-card>

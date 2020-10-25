@@ -9,7 +9,14 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $channels = [
+            1 => 'BBC One',
+            'BBC Two',
+            'BBC Three',
+            'BBC Four',
+        ];
+
+        return view('home', compact('channels'));
     }
 
     public function values()
@@ -45,6 +52,6 @@ class HomeController extends Controller
         return redirect()
             ->back()
             ->withInput()
-            ->with('message', 'Done!');
+            ->with('message', 'Looks good!');
     }
 }
