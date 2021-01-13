@@ -21,4 +21,9 @@ class Values extends Model
             self::whereName($key)->update(compact('value'));
         }
     }
+
+    public static function parse(string $tags): array
+    {
+        return preg_split('/ ?[,|] ?/', $tags);
+    }
 }
