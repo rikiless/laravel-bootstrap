@@ -159,5 +159,27 @@
     </div>
 </div>
 
+<div class="container no-vue">
+    <x-card title="Alpine Playground">
+
+        <div id="alert" x-data="{ show: true }">
+            <div x-show="show"
+                 x-init="setTimeout(() => show = false, 4000)"
+                 class="alert alert-success">
+                Hello World!
+            </div>
+
+            <button @click="show = !show"
+                    @click.away="show = false"
+                    class="btn"
+                    x-bind:class="show ? 'btn-outline-success' : 'btn-success'">
+                Toggle
+            </button>
+        </div>
+
+    </x-card>
+</div>
+
 <script src="{{ mix('js/app.js') }}"></script>
+<script src="//unpkg.com/alpinejs" defer></script>
 </html>
