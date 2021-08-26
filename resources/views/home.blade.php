@@ -41,11 +41,7 @@
                     </div>
                 </div>
 
-                <x-card>
-                    @slot('title')
-                        PhpStorm's Live Templates
-                    @endslot
-
+                <x-card title="PhpStorm's Live Templates">
                     @if ($flash = session('message'))
                         <div class="alert alert-success">
                             {{ $flash }}
@@ -106,11 +102,7 @@
                     </form>
                 </x-card>
 
-                <x-card>
-                    @slot('title')
-                        GitHub
-                    @endslot
-
+                <x-card title="GitHub">
                     <a href="" class="btn btn-primary">Refresh Token</a>
                     <a href="" class="btn btn-secondary">Unlink</a>
                 </x-card>
@@ -149,29 +141,17 @@
                     </table>
                 </div>
 
-                <x-card>
-                    @slot('title')
-                        Horizontal Form
-                    @endslot
-
+                <x-card title="Horizontal Form">
                     <form-components></form-components>
                 </x-card>
 
-                <x-card>
-                    @slot('title')
-                        Form with Built Validation
-                    @endslot
-
+                <x-card title="Form with Built Validation">
                     <form-validation></form-validation>
                 </x-card>
 
                 <form-readonly></form-readonly>
 
-                <x-card>
-                    @slot('title')
-                        Trix Editor
-                    @endslot
-
+                <x-card title="Trix Editor">
                     <wysiwyg></wysiwyg>
                 </x-card>
             </div>
