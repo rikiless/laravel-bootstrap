@@ -14,13 +14,17 @@ $table-group-seperator-color: #dfe2e6;
 }
 
 body {
-    background-color: #ebebeb;
+    background-color: #f3f4f6;
 }
 
 .card {
     .table th, .table td {
         padding-left: 1.5em;
         padding-right: 1.5em;
+    }
+
+    h4.card-title {
+        margin-bottom: 20px;
     }
 }
 

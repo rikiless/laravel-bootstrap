@@ -30,9 +30,9 @@
             </div>
 
             <div class="col-sm">
-                <div class="card mb-4 shadow-sm">
-                    <h5 class="card-header">Bitbucket</h5>
+                <div class="card mb-4 border-0">
                     <div class="card-body">
+                        <h4 class="card-title">Bitbucket</h4>
                         <p class="card-text">
                             With supporting text below as a natural lead-in to additional content.
                         </p>
@@ -107,7 +107,7 @@
                     <a href="" class="btn btn-secondary">Unlink</a>
                 </x-card>
 
-                <div class="card mb-4 shadow-sm">
+                <div class="card mb-4 border-0">
                     <h5 class="card-header">Invoices</h5>
                     <table class="table table-striped table-hover mb-0">
                         <thead class="border-light">
